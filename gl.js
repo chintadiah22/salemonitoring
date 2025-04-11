@@ -1,3 +1,85 @@
-/*! Select2 4.0.13 | https://github.com/select2/select2/blob/master/LICENSE.md */
+//! moment.js locale configuration
+//! locale : Galician [gl]
+//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
-!function(){if(jQuery&&jQuery.fn&&jQuery.fn.select2&&jQuery.fn.select2.amd)var e=jQuery.fn.select2.amd;e.define("select2/i18n/gl",[],function(){return{errorLoading:function(){return"Non foi posíbel cargar os resultados."},inputTooLong:function(e){var n=e.input.length-e.maximum;return 1===n?"Elimine un carácter":"Elimine "+n+" caracteres"},inputTooShort:function(e){var n=e.minimum-e.input.length;return 1===n?"Engada un carácter":"Engada "+n+" caracteres"},loadingMore:function(){return"Cargando máis resultados…"},maximumSelected:function(e){return 1===e.maximum?"Só pode seleccionar un elemento":"Só pode seleccionar "+e.maximum+" elementos"},noResults:function(){return"Non se atoparon resultados"},searching:function(){return"Buscando…"},removeAllItems:function(){return"Elimina todos os elementos"}}}),e.define,e.require}();
+;(function (global, factory) {
+   typeof exports === 'object' && typeof module !== 'undefined'
+       && typeof require === 'function' ? factory(require('../moment')) :
+   typeof define === 'function' && define.amd ? define(['../moment'], factory) :
+   factory(global.moment)
+}(this, (function (moment) { 'use strict';
+
+    //! moment.js locale configuration
+
+    var gl = moment.defineLocale('gl', {
+        months: 'xaneiro_febreiro_marzo_abril_maio_xuño_xullo_agosto_setembro_outubro_novembro_decembro'.split(
+            '_'
+        ),
+        monthsShort: 'xan._feb._mar._abr._mai._xuñ._xul._ago._set._out._nov._dec.'.split(
+            '_'
+        ),
+        monthsParseExact: true,
+        weekdays: 'domingo_luns_martes_mércores_xoves_venres_sábado'.split('_'),
+        weekdaysShort: 'dom._lun._mar._mér._xov._ven._sáb.'.split('_'),
+        weekdaysMin: 'do_lu_ma_mé_xo_ve_sá'.split('_'),
+        weekdaysParseExact: true,
+        longDateFormat: {
+            LT: 'H:mm',
+            LTS: 'H:mm:ss',
+            L: 'DD/MM/YYYY',
+            LL: 'D [de] MMMM [de] YYYY',
+            LLL: 'D [de] MMMM [de] YYYY H:mm',
+            LLLL: 'dddd, D [de] MMMM [de] YYYY H:mm',
+        },
+        calendar: {
+            sameDay: function () {
+                return '[hoxe ' + (this.hours() !== 1 ? 'ás' : 'á') + '] LT';
+            },
+            nextDay: function () {
+                return '[mañá ' + (this.hours() !== 1 ? 'ás' : 'á') + '] LT';
+            },
+            nextWeek: function () {
+                return 'dddd [' + (this.hours() !== 1 ? 'ás' : 'a') + '] LT';
+            },
+            lastDay: function () {
+                return '[onte ' + (this.hours() !== 1 ? 'á' : 'a') + '] LT';
+            },
+            lastWeek: function () {
+                return (
+                    '[o] dddd [pasado ' + (this.hours() !== 1 ? 'ás' : 'a') + '] LT'
+                );
+            },
+            sameElse: 'L',
+        },
+        relativeTime: {
+            future: function (str) {
+                if (str.indexOf('un') === 0) {
+                    return 'n' + str;
+                }
+                return 'en ' + str;
+            },
+            past: 'hai %s',
+            s: 'uns segundos',
+            ss: '%d segundos',
+            m: 'un minuto',
+            mm: '%d minutos',
+            h: 'unha hora',
+            hh: '%d horas',
+            d: 'un día',
+            dd: '%d días',
+            M: 'un mes',
+            MM: '%d meses',
+            y: 'un ano',
+            yy: '%d anos',
+        },
+        dayOfMonthOrdinalParse: /\d{1,2}º/,
+        ordinal: '%dº',
+        week: {
+            dow: 1, // Monday is the first day of the week.
+            doy: 4, // The week that contains Jan 4th is the first week of the year.
+        },
+    });
+
+    return gl;
+
+})));
